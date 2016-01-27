@@ -25,7 +25,7 @@
 NAME =			lem-in
 
 INC =			lem_in.h
-SRC =			lem_in_main.c lem_in_get_infos.c
+SRC =			lem_in_main.c lem_in_get_infos.c lem_in_error.c
 
 BINAIRE =		$(SRC:.c=.o)
 TMP =			$(INC:.h=.h.gch)
