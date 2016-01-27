@@ -1,54 +1,32 @@
 #include "lem_in.h"
 
-char		**lem_in_join_line(char **line, char ***read)
+int			lem_in_line_type(char *line, t_map *map)
 {
-	size_t	i;
-	size_t	len;
-	char	**new;
-
-	i = 0;
-	len = 0;
-	while (*read && (*read)[len])
-		len++;
-	if (!(new = (char **)malloc(sizeof(char *)  * (len + 2))))
-		lem_in_print_error();
-	new[len + 1] = NULL;
-	while (i++ < len)
-		new[i - 1] = (*read)[i - 1];
-	new[len] = *line;
-	if (*read)
-		free(*read);
-	return (new);
+	if (line[0] && line[0] == '#' && line[1] && line[1] =='#')
+	{
+		if (ft_strcmp("##start", line) == 0)
+			return (CMD_START);
+		else if (ft_strcmp("##end", line) == 0)
+			return (CMD_END);
+		return (CMD_UNKNOWN);
+	}
+	else if (line[0] && line[0] == '#')
+		return (COMMENT);
+	else if (lem_in_str_is_all_num(line))
+		return (ANT_LINE);
+	else if (lem_in_is_hall_line(line))
+		return (HALL_LINE);
+	else if (lem_in_is_tube_line(line))
+		return (TUBE_LINE);
+	return (INVALID_LINE);
 }
 
-void		lem_in_print_entry(char **read)
+void		lem_in_add_hall_line(char *line, t_map *map)
 {
-	int		i;
-
-	i = 0;
-	while (read && read[i])
-	{
-		ft_printf("line %d: %s\n", i, read[i]);
-		i++;
-	}
 }
 
-int			lem_in_line_type(char *line)
+void		lem_in_add_tube_line(char *line, t_map *map)
 {
-	if (line[0] && line[0] == '#')
-	{
-		if (line[1] && line[1] =='#')
-		{
-			if (ft_strcmp("##start", line) == 0)
-				return (CMD_START);
-			else if (ft_strcmp("##end", line) == 0)
-				return (CMD_END);
-			return (CMD_UNKNOWN);
-		}
-		else
-			return (COMMENT);
-	}
-	return (MAP_LINE);
 }
 
 int			lem_in_line_is_valid(char *line, t_map *map)
@@ -56,17 +34,23 @@ int			lem_in_line_is_valid(char *line, t_map *map)
 	int		is_valid;
 	int		line_type;
 
+	is_valid = 1;
 	line_type = lem_in_line_type(line);
 	if (line_type == CMD_UNKNOWN || line_type == COMMENT)
-		return (0);
-	else if (map->state == ANT_LINE && line_type == MAP_LINE)
-		is_valid = lem_in_get_ant_number(line, map);
-	else if (map->state == HALL_LINE || map->state == TUBE_LINE
-			&& line_type == MAP_LINE)
-		is_valid = lem_in_get_map_infos(line, map);
-	if (is_valid == -1)
-		return (-1);
-	return (1);
+		is_valid = 0;
+	else if (map->state == ANT_LINE && line_type == ANT_LINE)
+	{
+		map->ant_nb = ft_atoi(line);
+		map->state = HALL_LINE;
+	}
+	else if (map->state == HALL_LINE && line_type == HALL_LINE)
+		lem_in_add_hall_line(line, map);
+	else if ((map->state == HALL_LINE || map->state == TUBE_LINE) &&
+			line_type == TUBE_LINE)
+		lem_in_add_tube_line(line, map);
+	else
+		is_valid = -1;
+	return (is_valid);
 }
 
 void		lem_in_get_infos(t_map *map)
