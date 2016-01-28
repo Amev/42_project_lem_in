@@ -57,7 +57,7 @@ int			lem_in_is_tube_line(char *line)
 {
 	int		i;
 	int		ret;
-	int		**split;
+	char	**split;
 
 	i = 0;
 	ret = 1;

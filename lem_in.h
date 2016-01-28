@@ -37,8 +37,11 @@ typedef struct		s_map
 	int				ant_nb;
 	t_tube			*tubes;
 	t_hall			*halls;
-	t_hall			start;
-	t_hall			end;
+	int				start;
+	int				end;
+	int				halls_size;
+	int				tubes_size;
+	int				next;
 }					t_map;
 
 void				lem_in_get_infos(t_map *map);
