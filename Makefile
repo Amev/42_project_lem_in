@@ -24,10 +24,13 @@
 
 NAME =			lem-in
 
-INC =			lem_in.h
-SRC =			lem_in_main.c lem_in_get_infos.c lem_in_error.c lem_in_tools.c
+INC =			src/lem_in.h
+SRC =			src/lem_in_main.c src/lem_in_get_infos.c
+FUNC =			functions/lem_in_is_hall_line.c functions/lem_in_is_tube_line.c \
+				functions/lem_in_join_line.c functions/lem_in_print_entry.c \
+				functions/lem_in_print_error.c functions/lem_in_str_is_all_num.c
 
-BINAIRE =		$(SRC:.c=.o)
+BINAIRE =		$(SRC:.c=.o) $(FUNC:.c=.o)
 TMP =			$(INC:.h=.h.gch)
 
 CC =			gcc
