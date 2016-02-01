@@ -2,7 +2,6 @@
 # define LEM_IN_H
 
 # include "../libft/libft.h"
-# include "../functions/lem_in_functions.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,7 +28,18 @@ typedef struct		s_tube
 {
 	char			*name1;
 	char			*name2;
+	int				index1;
+	int				index2;
 }					t_tube;
+
+typedef struct		s_node
+{
+	t_hall			hall;
+	int				*links;
+	int				links_size;
+	int				is_start;
+	int				is_end;
+}					t_node;
 
 typedef struct		s_map
 {
@@ -42,9 +52,14 @@ typedef struct		s_map
 	int				end;
 	int				halls_size;
 	int				tubes_size;
+	int				graph_size;
 	int				next;
+	t_node			*graph;
 }					t_map;
 
+# include "../functions/lem_in_functions.h"
+
 void				lem_in_get_infos(t_map *map);
+void				lem_in_graph_constructor(t_map *map);
 
 #endif

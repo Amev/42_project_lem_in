@@ -25,10 +25,11 @@
 NAME =			lem-in
 
 INC =			src/lem_in.h
-SRC =			src/lem_in_main.c src/lem_in_get_infos.c
+SRC =			src/lem_in_main.c src/lem_in_get_infos.c src/lem_in_graph_constructor.c
 FUNC =			functions/lem_in_is_hall_line.c functions/lem_in_is_tube_line.c \
 				functions/lem_in_join_line.c functions/lem_in_print_entry.c \
-				functions/lem_in_print_error.c functions/lem_in_str_is_all_num.c
+				functions/lem_in_print_error.c functions/lem_in_str_is_all_num.c \
+				functions/lem_in_print_t_map.c functions/lem_in_map_names.c
 
 BINAIRE =		$(SRC:.c=.o) $(FUNC:.c=.o)
 TMP =			$(INC:.h=.h.gch)

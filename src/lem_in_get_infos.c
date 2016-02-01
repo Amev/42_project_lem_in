@@ -56,7 +56,7 @@ void		lem_in_add_tube_line(char *line, t_map *map)
 	t_tube	*new_tubes;
 
 	i = 0;
-	if (!(split = ft_strsplit(line, ' ')))
+	if (!(split = ft_strsplit(line, '-')))
 		lem_in_print_error();
 	if (!(new_tube.name1 = ft_strdup(split[0])))
 		lem_in_print_error();
@@ -115,5 +115,4 @@ void		lem_in_get_infos(t_map *map)
 		read = lem_in_join_line(&line, &read);
 	}
 	map->entry = read;
-	lem_in_print_entry(map->entry);
 }
