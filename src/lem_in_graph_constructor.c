@@ -12,6 +12,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	node.is_end = 0;
 	node.is_start = 0;
 	node.links_size = 0;
+	node.is_available = 1;
 	if(!(new = (t_node *)malloc(sizeof(t_node) * (map->graph_size + 1))))
 		lem_in_print_error();
 	new[map->graph_size] = node;
@@ -23,7 +24,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	map->graph = new;
 }
 
-int			lem_has_link(t_node node, int index)
+int			lem_in_has_link(t_node node, int index)
 {
 	int		i;
 
@@ -53,9 +54,9 @@ void		lem_in_link_node(t_node *node, int index)
 
 void		lem_in_link_nodes(t_tube tube, t_map *map)
 {
-	if (!lem_has_link(map->graph[tube.index1], tube.index2))
+	if (!lem_in_has_link(map->graph[tube.index1], tube.index2))
 		lem_in_link_node(&(map->graph[tube.index1]), tube.index2);
-	if (!lem_has_link(map->graph[tube.index2], tube.index1))
+	if (!lem_in_has_link(map->graph[tube.index2], tube.index1))
 		lem_in_link_node(&(map->graph[tube.index2]), tube.index1);
 }
 

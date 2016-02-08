@@ -25,7 +25,8 @@
 NAME =			lem-in
 
 INC =			src/lem_in.h
-SRC =			src/lem_in_main.c src/lem_in_get_infos.c src/lem_in_graph_constructor.c
+SRC =			src/lem_in_main.c src/lem_in_get_infos.c src/lem_in_paths.c \
+				src/lem_in_graph_constructor.c src/lem_in_pathfinding.c
 FUNC =			functions/lem_in_is_hall_line.c functions/lem_in_is_tube_line.c \
 				functions/lem_in_join_line.c functions/lem_in_print_entry.c \
 				functions/lem_in_print_error.c functions/lem_in_str_is_all_num.c \

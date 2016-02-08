@@ -24,6 +24,20 @@ void		lem_in_print_t_node(t_node node)
 	ft_printf("{eoc}\n");
 }
 
+void		lem_in_print_t_path(t_path path, t_map map)
+{
+	int		i;
+
+	i = 0;
+	ft_printf("len: {ylw}%d{eoc}\npath:", path.len);
+	while (i < path.len)
+	{
+		ft_printf(" {ylw}%d{eoc}[{grn}%s{eoc}]", path.path[i], map.halls[path.path[i]]);
+		i++;
+	}
+	ft_printf("{eoc}\n");
+}
+
 void		lem_in_print_t_map(t_map map)
 {
 	int		i;
@@ -43,4 +57,8 @@ void		lem_in_print_t_map(t_map map)
 	ft_printf("\n{red}### graph ###{eoc}\n");
 	while (i < map.graph_size)
 		lem_in_print_t_node(map.graph[i++]);
+	i = 0;
+	ft_printf("\n{red}### paths ###{eoc}\n");
+	while (i < map.paths_size)
+		lem_in_print_t_path(map.paths[i++], map);
 }

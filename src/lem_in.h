@@ -37,9 +37,19 @@ typedef struct		s_node
 	t_hall			hall;
 	int				*links;
 	int				links_size;
+	int				is_available;
 	int				is_start;
 	int				is_end;
+	int				weight;
+	int				father;
+	int				tag;
 }					t_node;
+
+typedef struct		s_path
+{
+	int				*path;
+	int				len;
+}					t_path;
 
 typedef struct		s_map
 {
@@ -53,13 +63,17 @@ typedef struct		s_map
 	int				halls_size;
 	int				tubes_size;
 	int				graph_size;
+	int				paths_size;
 	int				next;
 	t_node			*graph;
+	t_path			*paths;
 }					t_map;
 
 # include "../functions/lem_in_functions.h"
 
 void				lem_in_get_infos(t_map *map);
 void				lem_in_graph_constructor(t_map *map);
+int					lem_in_pathfinding(t_map *map, int **path);
+void				lem_in_paths(t_map *map);
 
 #endif
