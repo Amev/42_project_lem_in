@@ -6,8 +6,5 @@ void		lem_in_print_entry(char **read)
 
 	i = 0;
 	while (read && read[i])
-	{
-		ft_printf("line %d: {grn}%s{eoc}\n", i, read[i]);
-		i++;
-	}
+		ft_printf("%s\n", read[i++]);
 }

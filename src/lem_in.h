@@ -43,11 +43,19 @@ typedef struct		s_node
 	int				weight;
 	int				father;
 	int				tag;
+	int				ant;
 }					t_node;
+
+typedef struct		s_ant
+{
+	int				name;
+	int				node;
+}					t_ant;
 
 typedef struct		s_path
 {
 	int				*path;
+	int				extra;
 	int				len;
 }					t_path;
 
@@ -67,6 +75,10 @@ typedef struct		s_map
 	int				next;
 	t_node			*graph;
 	t_path			*paths;
+	int				shortest_len;
+	int				shortest_path;
+	t_ant			*ants;
+	int				ants_start;
 }					t_map;
 
 # include "../functions/lem_in_functions.h"
@@ -75,5 +87,6 @@ void				lem_in_get_infos(t_map *map);
 void				lem_in_graph_constructor(t_map *map);
 int					lem_in_pathfinding(t_map *map, int **path);
 void				lem_in_paths(t_map *map);
+void				lem_in_ants_moves(t_map *map);
 
 #endif

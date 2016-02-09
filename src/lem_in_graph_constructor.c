@@ -7,6 +7,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	t_node	*new;
 
 	i = 0;
+	node.ant = -1;
 	node.hall = hall;
 	node.links = NULL;
 	node.is_end = 0;
@@ -24,7 +25,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	map->graph = new;
 }
 
-int			lem_in_has_link(t_node node, int index)
+int			lem_has_link(t_node node, int index)
 {
 	int		i;
 
@@ -54,9 +55,9 @@ void		lem_in_link_node(t_node *node, int index)
 
 void		lem_in_link_nodes(t_tube tube, t_map *map)
 {
-	if (!lem_in_has_link(map->graph[tube.index1], tube.index2))
+	if (!lem_has_link(map->graph[tube.index1], tube.index2))
 		lem_in_link_node(&(map->graph[tube.index1]), tube.index2);
-	if (!lem_in_has_link(map->graph[tube.index2], tube.index1))
+	if (!lem_has_link(map->graph[tube.index2], tube.index1))
 		lem_in_link_node(&(map->graph[tube.index2]), tube.index1);
 }
 

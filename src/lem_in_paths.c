@@ -16,6 +16,11 @@ void		lem_in_join_paths(t_map *map, int **path, int len)
 	new[map->paths_size] = new_path;
 	if (map->paths)
 		free(map->paths);
+	if (len < map->shortest_len || map->shortest_len == -1)
+	{
+		map->shortest_len = len;
+		map->shortest_path = map->paths_size;
+	}
 	map->paths_size++;
 	map->paths = new;
 }
@@ -33,6 +38,15 @@ void		lem_in_unavailable_halls(t_map *map, int *path, int len)
 	}
 }
 
+void		lem_in_calc_extra(t_map *map)
+{
+	int		i;
+
+	i = 0;
+	while (i++ < map->paths_size)
+		map->paths[i - 1].extra = map->paths[i - 1].len - map->shortest_len;
+}
+
 void		lem_in_paths(t_map *map)
 {
 	int		len;
@@ -45,4 +59,7 @@ void		lem_in_paths(t_map *map)
 		lem_in_unavailable_halls(map, path, len);
 		path = NULL;
 	}
+	lem_in_calc_extra(map);
+	if (map->paths_size <= 0)
+		lem_in_print_error();
 }
