@@ -6,7 +6,7 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:02:47 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 15:02:48 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/10 16:41:13 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void		lem_in_paths(t_map *map)
 		lem_in_join_paths(map, &path, len);
 		lem_in_unavailable_halls(map, path, len);
 		path = NULL;
+		if (len == 2)
+			break ;
 	}
 	lem_in_calc_extra(map);
 	if (map->paths_size <= 0)

@@ -6,7 +6,7 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:01:18 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 15:09:31 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/10 16:44:29 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,17 @@ void		lem_in_get_infos(t_map *map)
 	char	*line;
 	char	**read;
 
+	res = 1;
 	line = NULL;
 	read = NULL;
-	while (1)
+	while (res > 0)
 	{
-		if ((res = get_next_line(0, &line)) == 0 || line[0] == 0)
+		if ((res = get_next_line(0, &line)) == -1)
+			lem_in_print_error();
+		if (line && line[0] != 0 && lem_in_line_is_valid(line, map) != -1)
+			read = lem_in_join_line(&line, &read);
+		else
 			break ;
-		if (lem_in_line_is_valid(line, map) == -1)
-			break ;
-		read = lem_in_join_line(&line, &read);
 	}
 	map->entry = read;
 }
