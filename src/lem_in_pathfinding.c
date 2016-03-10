@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in_pathfinding.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 15:02:22 by vame              #+#    #+#             */
+/*   Updated: 2016/03/10 15:08:10 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void		lem_in_init_nodes(t_map *map)
@@ -76,7 +88,7 @@ void		lem_in_son_weight(int cur, t_map *map)
 	node = map->graph[cur];
 	while (i < node.links_size)
 	{
-		if (!map->graph[node.links[i]].tag && (map->graph[node.links[i]].weight 
+		if (!map->graph[node.links[i]].tag && (map->graph[node.links[i]].weight
 				== -1 || (node.weight + 1) < map->graph[node.links[i]].weight))
 		{
 			map->graph[node.links[i]].weight = node.weight + 1;

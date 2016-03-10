@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 14:51:53 by vame              #+#    #+#             */
+/*   Updated: 2016/03/10 15:06:46 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
@@ -16,6 +28,8 @@
 # define HALL_LINE 20
 # define TUBE_LINE 30
 # define INVALID_LINE 40
+
+# include "../functions/lem_in_functions.h"
 
 typedef struct		s_hall
 {
@@ -80,8 +94,6 @@ typedef struct		s_map
 	t_ant			*ants;
 	int				ants_start;
 }					t_map;
-
-# include "../functions/lem_in_functions.h"
 
 void				lem_in_get_infos(t_map *map);
 void				lem_in_graph_constructor(t_map *map);

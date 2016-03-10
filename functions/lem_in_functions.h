@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in_functions.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 14:49:08 by vame              #+#    #+#             */
+/*   Updated: 2016/03/10 15:03:30 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEM_IN_FUNCTIONS_H
 # define LEM_IN_FUNCTIONS_H
 
 # include "../libft/libft.h"
-#include "../src/lem_in.h"
+# include "../src/lem_in.h"
 
 void				lem_in_print_error();
 char				**lem_in_join_line(char **line, char ***read);

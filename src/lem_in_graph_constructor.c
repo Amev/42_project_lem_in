@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in_graph_constructor.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 15:01:30 by vame              #+#    #+#             */
+/*   Updated: 2016/03/10 15:07:19 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void		lem_in_join_nodes(t_map *map, t_hall hall)
@@ -14,7 +26,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	node.is_start = 0;
 	node.links_size = 0;
 	node.is_available = 1;
-	if(!(new = (t_node *)malloc(sizeof(t_node) * (map->graph_size + 1))))
+	if (!(new = (t_node *)malloc(sizeof(t_node) * (map->graph_size + 1))))
 		lem_in_print_error();
 	new[map->graph_size] = node;
 	while (i++ < map->graph_size)

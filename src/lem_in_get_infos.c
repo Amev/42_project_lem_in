@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_in_get_infos.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 15:01:18 by vame              #+#    #+#             */
+/*   Updated: 2016/03/10 15:09:31 by vame             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int			lem_in_line_type(char *line)
 {
-	if (line[0] && line[0] == '#' && line[1] && line[1] =='#')
+	if (line[0] && line[0] == '#' && line[1] && line[1] == '#')
 	{
 		if (ft_strcmp("##start", line) == 0)
 			return (CMD_START);
@@ -90,7 +102,7 @@ int			lem_in_line_is_valid(char *line, t_map *map)
 		map->ant_nb = ft_atoi(line);
 	else if (map->state == HALL_LINE && line_type == HALL_LINE)
 		lem_in_add_hall_line(line, map);
-	else if (((map->state == HALL_LINE && map->next != HALL_LINE ) || map->state
+	else if (((map->state == HALL_LINE && map->next != HALL_LINE) || map->state
 			== TUBE_LINE) && line_type == TUBE_LINE && (map->state = TUBE_LINE))
 		lem_in_add_tube_line(line, map);
 	else if (line_type != CMD_UNKNOWN && line_type != COMMENT)
