@@ -18,12 +18,20 @@ void		lem_in_init_map(t_map *map)
 	map->shortest_path = -1;
 }
 
+void		lem_in_check_map(t_map *map)
+{
+	if (map->end < 0 || map->start < 0 || map->halls_size <= 0 ||
+			map->tubes_size <= 0)
+		lem_in_print_error();
+}
+
 int			main(void)
 {
 	t_map	map;
 
 	lem_in_init_map(&map);
 	lem_in_get_infos(&map);
+	lem_in_check_map(&map);
 	lem_in_graph_constructor(&map);
 	lem_in_paths(&map);
 	lem_in_print_entry(map.entry);
