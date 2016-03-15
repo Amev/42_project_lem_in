@@ -6,7 +6,7 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:49:08 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 15:03:30 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/11 11:06:03 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include "../src/lem_in.h"
 
-void				lem_in_print_error();
+void				lem_in_print_error(void);
 char				**lem_in_join_line(char **line, char ***read);
 int					lem_in_str_is_all_num(char *str);
 int					lem_in_is_hall_line(char *line);

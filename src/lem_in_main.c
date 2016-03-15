@@ -6,13 +6,13 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:01:37 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 16:41:15 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:17:47 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		lem_in_init_map(t_map *map)
+static void	lem_in_init_map(t_map *map)
 {
 	map->next = 0;
 	map->end = -1;
@@ -30,7 +30,7 @@ void		lem_in_init_map(t_map *map)
 	map->shortest_path = -1;
 }
 
-void		lem_in_check_map(t_map *map)
+static void	lem_in_check_map(t_map *map)
 {
 	if (map->end < 0 || map->start < 0 || map->halls_size <= 0 ||
 			map->tubes_size <= 0)

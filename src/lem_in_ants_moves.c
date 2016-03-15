@@ -6,24 +6,24 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 14:51:59 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 15:01:05 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:22:29 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_ant		lem_in_new_ant(int name, int node)
+static t_ant	lem_in_new_ant(int name, int node)
 {
-	t_ant	new;
+	t_ant		new;
 
 	new.name = name;
 	new.node = node;
 	return (new);
 }
 
-void		lem_in_init_ants(t_map *map)
+static void		lem_in_init_ants(t_map *map)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	map->ants_start = map->ant_nb;
@@ -33,9 +33,9 @@ void		lem_in_init_ants(t_map *map)
 		map->ants[i - 1] = lem_in_new_ant(i, map->start);
 }
 
-int			lem_in_win_test(t_map *map)
+static int		lem_in_win_test(t_map *map)
 {
-	int		i;
+	int			i;
 
 	i = map->ant_nb;
 	ft_printf("\n");
@@ -45,11 +45,11 @@ int			lem_in_win_test(t_map *map)
 	return (1);
 }
 
-int			lem_in_move_path_ants(t_map *map, int i, char c)
+static int		lem_in_move_path_ants(t_map *map, int i, char c)
 {
-	int		j;
-	int		ant;
-	int		node;
+	int			j;
+	int			ant;
+	int			node;
 
 	node = -1;
 	j = map->paths[i].len - 1;
@@ -69,11 +69,11 @@ int			lem_in_move_path_ants(t_map *map, int i, char c)
 	return (node);
 }
 
-void		lem_in_ants_moves(t_map *map)
+void			lem_in_ants_moves(t_map *map)
 {
-	int		i;
-	int		j;
-	char	c;
+	int			i;
+	int			j;
+	char		c;
 
 	j = 0;
 	lem_in_init_ants(map);

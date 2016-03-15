@@ -6,13 +6,13 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:02:22 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 16:41:10 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:21:00 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		lem_in_init_nodes(t_map *map)
+static void	lem_in_init_nodes(t_map *map)
 {
 	int		i;
 
@@ -31,7 +31,7 @@ void		lem_in_init_nodes(t_map *map)
 	}
 }
 
-int			lem_in_find_current(t_map *map)
+static int	lem_in_find_current(t_map *map)
 {
 	int		i;
 	int		min;
@@ -54,7 +54,7 @@ int			lem_in_find_current(t_map *map)
 	return (current);
 }
 
-int			lem_in_create_path(t_map *map, int **path)
+static int	lem_in_create_path(t_map *map, int **path)
 {
 	int		i;
 	int		len;
@@ -79,7 +79,7 @@ int			lem_in_create_path(t_map *map, int **path)
 	return (len);
 }
 
-void		lem_in_son_weight(int cur, t_map *map)
+static void	lem_in_son_weight(int cur, t_map *map)
 {
 	int		i;
 	t_node	node;

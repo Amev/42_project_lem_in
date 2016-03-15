@@ -6,13 +6,13 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:02:47 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 16:41:13 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:21:28 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		lem_in_join_paths(t_map *map, int **path, int len)
+static void	lem_in_join_paths(t_map *map, int **path, int len)
 {
 	int		i;
 	t_path	*new;
@@ -37,7 +37,7 @@ void		lem_in_join_paths(t_map *map, int **path, int len)
 	map->paths = new;
 }
 
-void		lem_in_unavailable_halls(t_map *map, int *path, int len)
+static void	lem_in_unavailable_halls(t_map *map, int *path, int len)
 {
 	int		i;
 
@@ -50,7 +50,7 @@ void		lem_in_unavailable_halls(t_map *map, int *path, int len)
 	}
 }
 
-void		lem_in_calc_extra(t_map *map)
+static void	lem_in_calc_extra(t_map *map)
 {
 	int		i;
 

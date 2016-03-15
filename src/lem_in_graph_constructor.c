@@ -6,13 +6,13 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:01:30 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 16:45:32 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:20:18 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		lem_in_join_nodes(t_map *map, t_hall hall)
+static void	lem_in_join_nodes(t_map *map, t_hall hall)
 {
 	int		i;
 	t_node	node;
@@ -37,7 +37,7 @@ void		lem_in_join_nodes(t_map *map, t_hall hall)
 	map->graph = new;
 }
 
-int			lem_has_link(t_node node, int index)
+static int	lem_has_link(t_node node, int index)
 {
 	int		i;
 
@@ -48,7 +48,7 @@ int			lem_has_link(t_node node, int index)
 	return (0);
 }
 
-void		lem_in_link_node(t_node *node, int index)
+static void	lem_in_link_node(t_node *node, int index)
 {
 	int		i;
 	int		*new;
@@ -65,7 +65,7 @@ void		lem_in_link_node(t_node *node, int index)
 	node->links_size++;
 }
 
-void		lem_in_link_nodes(t_tube tube, t_map *map)
+static void	lem_in_link_nodes(t_tube tube, t_map *map)
 {
 	if (!lem_has_link(map->graph[tube.index1], tube.index2))
 		lem_in_link_node(&(map->graph[tube.index1]), tube.index2);

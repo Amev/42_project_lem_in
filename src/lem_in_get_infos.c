@@ -6,13 +6,13 @@
 /*   By: vame <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:01:18 by vame              #+#    #+#             */
-/*   Updated: 2016/03/10 16:44:29 by vame             ###   ########.fr       */
+/*   Updated: 2016/03/15 10:19:45 by vame             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int			lem_in_line_type(char *line)
+static int	lem_in_line_type(char *line)
 {
 	if (line[0] && line[0] == '#' && line[1] && line[1] == '#')
 	{
@@ -33,7 +33,7 @@ int			lem_in_line_type(char *line)
 	return (INVALID_LINE);
 }
 
-void		lem_in_add_hall_line(char *line, t_map *map)
+static void	lem_in_add_hall_line(char *line, t_map *map)
 {
 	int		i;
 	char	**split;
@@ -60,7 +60,7 @@ void		lem_in_add_hall_line(char *line, t_map *map)
 	ft_strdel_double(&split);
 }
 
-void		lem_in_add_tube_line(char *line, t_map *map)
+static void	lem_in_add_tube_line(char *line, t_map *map)
 {
 	int		i;
 	char	**split;
@@ -86,7 +86,7 @@ void		lem_in_add_tube_line(char *line, t_map *map)
 	ft_strdel_double(&split);
 }
 
-int			lem_in_line_is_valid(char *line, t_map *map)
+static int	lem_in_line_is_valid(char *line, t_map *map)
 {
 	int		is_valid;
 	int		line_type;
